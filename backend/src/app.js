@@ -3,23 +3,15 @@ const cors = require("cors");
 const routes = require("./routes");
 const path = require("path");
 
-class App {
-  constructor() {
-    this.express = express();
-    this.middlewares();
-  }
+const app = express();
 
-  middlewares() {
-    this.express.use(
-      "/static",
-      express.static(path.resolve(__dirname, "static"))
-    );
-    this.express.use(cors());
-    this.express.use(express.json());
-    this.express.use("/api", routes);
-    this.express.get("/*", (req, res) => {
-      res.render("index.html");
-    });
-  }
-}
-module.exports = new App().express;
+app.use("/static", express.static(path.resolve(__dirname, "static")));
+app.use(cors());
+app.use(express.json());
+
+app.use("/api", routes);
+app.get("/*", (req, res) => {
+  res.render("index.html");
+});
+
+module.exports = app;
