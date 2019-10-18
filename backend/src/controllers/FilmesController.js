@@ -2,8 +2,8 @@ const Filme = require('../models/Filme');
 
 module.exports = {
   async Index(req, res) {
-    const { page } = req.params
-    const filme = await Filme.paginate(req.query, {
+    const { page } = req.query || 1
+    const filme = await Filme.paginate({}, {
       page,
       limit: 27,
       sort: { ano_lancamento: -1, updated_at: -1 },
