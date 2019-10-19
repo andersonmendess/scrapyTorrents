@@ -29,7 +29,7 @@ export default function Detail({ match }) {
   useEffect(() => {
     window.scrollTo(0, 0);
     async function getData() {
-      const { data } = await api.get(`/filme/${match.params.id}`);
+      const { data } = await api.get(`/filmes/${match.params.id}`);
       console.log(data);
       setFilme(data);
     }

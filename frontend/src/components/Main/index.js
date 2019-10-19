@@ -44,7 +44,7 @@ export default function Main() {
 
     const {
       data: { docs, pages },
-    } = await api.get(`/filmes/${page}${tipoPart}`);
+    } = await api.get(`/filmes?page=${page}${tipoPart}`);
 
     await dispatch({ type: 'INCREMENT_PAGE' });
     await dispatch({ type: 'ADD_DATA', new_data: docs });
